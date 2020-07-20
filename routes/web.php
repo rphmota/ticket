@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('front.master.home');
+    return view('front.login.login');
 });
+
+Route::get('/home', function () {
+    return view('front.master.home');
+})->name('home');
+
+Route::resource('sectors','SectorController');
+
+
