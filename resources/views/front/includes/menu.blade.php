@@ -24,7 +24,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
 
-                <li class="nav-header">Administração</li>
+                <li class="nav-header">Menu Administração</li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-plus-square"></i>
@@ -84,7 +84,36 @@
                     </ul>
                 </li>
 
-                <li class="nav-header">Setor</li>
+                <li class="nav-header">Menu Tecnicos</li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon far fa-plus-square"></i>
+                        <p>
+                            Setores
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{url('/sectors/create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Novo Setor</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{'/sectors'}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Listar Setores</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/examples/forgot-password.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Desativar Setor</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-plus-square"></i>
@@ -95,25 +124,27 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/examples/login.html" class="nav-link">
+                            <a href="{{url('/sectors/create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Novo Equipamento</p>
+                                <p>Novo Setor</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/examples/register.html" class="nav-link">
+                            <a href="{{'/sectors'}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Listar Equipamentos</p>
+                                <p>Listar Setores</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/examples/forgot-password.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Descarga de Equipamentos</p>
+                                <p>Desativar Setor</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+
+
 
                 {{-- exemplo de Menu multinivel
                     <li class="nav-item has-treeview">

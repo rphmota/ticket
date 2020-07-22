@@ -2,6 +2,7 @@
 @section('folhas')
 @endsection
 @section('content')
+    <h1>minha piroca</h1>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -36,49 +37,50 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form class="form-horizontal" action="{{route('sectors.store')}}" method="post">
+                            <form class="form-horizontal" action="{{ route('sectors.update',$sector->id) }}" method="post">
                                 @csrf
+                                @method('PUT')
 
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-2 col-form-label">Nome</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Qual o nome do setor?">
+                                            <input type="text" class="form-control" id="name" name="name" value="{{$sector->name}}" placeholder="Qual o nome do setor?">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="endereco" class="col-sm-2 col-form-label">Endereço</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Diga aonde está localizado">
+                                            <input type="text" class="form-control" id="endereco" name="endereco" value="{{$sector->endereco}}" placeholder="Diga aonde está localizado">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="telefone" class="col-sm-2 col-form-label">Telefone</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Qual o telefone de contato?">
+                                            <input type="text" class="form-control" id="telefone" name="telefone" value="{{$sector->telefone}}" placeholder="Qual o telefone de contato?">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="responsavel" class="col-sm-2 col-form-label">Responsavel</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="responsavel" name="responsavel" placeholder="Quem é o chefe?">
+                                            <input type="text" class="form-control" id="responsavel" name="responsavel" value="{{$sector->responsavel}}" placeholder="Quem é o chefe?">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descreva em poucas palavras o que seu setor faz">
+                                            <input type="text" class="form-control" id="descricao" name="descricao" value="{{$sector->descricao}}" placeholder="Descreva em poucas palavras o que seu setor faz">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="ativo" class="col-sm-2 col-form-label">Situação</label>
                                         <div class="col-sm-10 my-2">
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="customRadio1" name="ativo" value="1">
+                                                <input class="custom-control-input" type="radio" id="customRadio1" name="ativo" value="1" {{$sector->ativo == 1 ? 'checked' : ''}}>
                                                 <label for="customRadio1" class="custom-control-label">Ativo</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="customRadio2" name="ativo" value="0">
+                                                <input class="custom-control-input" type="radio" id="customRadio2" name="ativo" value="0" {{$sector->ativo == 0 ? 'checked' : ''}}>
                                                 <label for="customRadio2" class="custom-control-label">Inativo</label>
                                             </div>
                                             <div class="custom-control custom-radio">
@@ -90,7 +92,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-info">Cadastrar</button>
+                                    <button type="submit" class="btn btn-info">Atualizar</button>
                                 </div>
                                 <!-- /.card-footer -->
                             </form>

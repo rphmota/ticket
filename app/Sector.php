@@ -12,4 +12,7 @@ class Sector extends Model
         'name', 'endereco', 'telefone', 'responsavel', 'descricao', 'ativo'
     ];
 
+
+
+
 }

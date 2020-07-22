@@ -32,65 +32,67 @@
                         <!-- Horizontal Form -->
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title">Formulario de cadastro de Setores</h3>
+                                <h3 class="card-title">Detalhes do Setor</h3>
                             </div>
                             <!-- /.card-header -->
-                            <!-- form start -->
-                            <form class="form-horizontal" action="{{route('sectors.store')}}" method="post">
-                                @csrf
-
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-2 col-form-label">Nome</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Qual o nome do setor?">
+                                            <h4>{{$sector->name}}</h4>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="endereco" class="col-sm-2 col-form-label">Endereço</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Diga aonde está localizado">
+                                            <h4>{{$sector->endereco}}</h4>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="telefone" class="col-sm-2 col-form-label">Telefone</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Qual o telefone de contato?">
+                                            <h4>{{$sector->telefone}}</h4>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="responsavel" class="col-sm-2 col-form-label">Responsavel</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="responsavel" name="responsavel" placeholder="Quem é o chefe?">
+                                            <h4>{{$sector->responsavel}}</h4>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descreva em poucas palavras o que seu setor faz">
+                                            <h4>{{$sector->descricao}}</h4>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="ativo" class="col-sm-2 col-form-label">Situação</label>
-                                        <div class="col-sm-10 my-2">
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="customRadio1" name="ativo" value="1">
-                                                <label for="customRadio1" class="custom-control-label">Ativo</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="customRadio2" name="ativo" value="0">
-                                                <label for="customRadio2" class="custom-control-label">Inativo</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                                <label>O valor padrao e ativo mas se quiser criar o setor e ativalo depois tambem pode</label>
-                                            </div>
+                                        <label for="descricao" class="col-sm-2 col-form-label">Situação</label>
+                                        <div class="col-sm-5">
+                                            <h4>{{$sector->ativo==1 ? 'Ativo' : 'Inativo'}}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="descricao" class="col-sm-2 col-form-label">Criado em</label>
+                                        <div class="col-sm-5">
+                                            <h4>{{$sector->created_at->format('d M Y - H:i:s') }}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="descricao" class="col-sm-2 col-form-label">Ultima Atualização</label>
+                                        <div class="col-sm-5">
+                                            <h4>{{$sector->updated_at->format('d M Y - H:i:s')}}</h4>
                                         </div>
                                     </div>
 
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-info">Cadastrar</button>
+                                    <a href="{{route('sectors.index')}}">
+                                        <button type="button" class="btn btn-info">
+                                            <i class="fas fa-long-arrow-alt-left ml-1"></i>
+                                        </button>
+                                    </a>
                                 </div>
                                 <!-- /.card-footer -->
                             </form>

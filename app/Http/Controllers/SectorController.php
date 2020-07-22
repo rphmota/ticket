@@ -14,7 +14,8 @@ class SectorController extends Controller
      */
     public function index()
     {
-        return view('front.sectors.index');
+        $sectors = Sector::latest()->paginate(5);
+        return view('front.sectors.index',compact('sectors'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -37,7 +38,7 @@ class SectorController extends Controller
     {
         Sector::create($request->all());
         return redirect()->route('sectors.index')
-            ->with('success','Product created successfully.');
+            ->with('success','Setor criado com sucesso.');
 
     }
 
@@ -49,7 +50,9 @@ class SectorController extends Controller
      */
     public function show(Sector $sector)
     {
-        //
+
+        return view('front.sectors.show',compact('sector'));
+
     }
 
     /**
@@ -60,7 +63,8 @@ class SectorController extends Controller
      */
     public function edit(Sector $sector)
     {
-        //
+
+        return view('front.sectors.edit',compact('sector'));
     }
 
     /**
@@ -72,7 +76,10 @@ class SectorController extends Controller
      */
     public function update(Request $request, Sector $sector)
     {
-        //
+        $sector->update($request->all());
+
+        return redirect()->route('sectors.index')
+            ->with('success','Setor Atualizado com sucesso');
     }
 
     /**
@@ -83,6 +90,9 @@ class SectorController extends Controller
      */
     public function destroy(Sector $sector)
     {
-        //
+        $sector->delete();
+
+        return redirect()->route('sectors.index')
+            ->with('success','Setor deletado com sucesso');
     }
 }
