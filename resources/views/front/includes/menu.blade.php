@@ -35,12 +35,6 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{url('/sectors/create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Novo Setor</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{'/sectors'}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Listar Setores</p>
@@ -64,15 +58,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{url('/sectors/create')}}" class="nav-link">
+                            <a href="{{route('users.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Novo Setor</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{'/sectors'}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Listar Setores</p>
+                                <p>Listar Usuarios</p>
                             </a>
                         </li>
                         <li class="nav-item">

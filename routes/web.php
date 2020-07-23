@@ -22,5 +22,6 @@ Route::get('/home', function () {
 })->name('home');
 
 Route::resource('sectors','SectorController');
+Route::resource('users','UserController');
 
 

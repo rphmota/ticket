@@ -16,7 +16,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Listagem de Setores</h1>
+                        <h1 class="m-0 text-dark">Listagem de Usuários</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ul class="breadcrumb float-sm-right">
@@ -32,7 +32,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <a class="btn btn-info" href="{{ route('sectors.create') }}">Novo</a>
+                <a class="btn btn-info" href="{{ route('users.create') }}">Novo</a>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -52,18 +52,18 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($sectors as $sector)
+                                    @foreach ($users as $user)
                                         <tr>
-                                            <td>{{$sector->id}}</td>
-                                            <td>{{$sector->name}}</td>
-                                            <td>{{$sector->telefone}}</td>
-                                            <td>{{$sector->responsavel}}</td>
+                                            <td>{{$user->id}}</td>
+                                            <td>{{$user->name}}</td>
+                                            <td>{{$user->nivel_acesso}}</td>
+                                            <td>{{$user->email}}</td>
                                             <td>
-                                                <form action="{{ route('sectors.destroy',$sector->id) }}" method="POST">
+                                                <form action="{{ route('sectors.destroy',$user->id) }}" method="POST">
 
-                                                    <a class="btn btn-info" href="{{ route('sectors.show',$sector->id) }}">Mostrar</a>
+                                                    <a class="btn btn-info" href="{{ route('sectors.show',$user->id) }}">Mostrar</a>
 
-                                                    <a class="btn btn-primary" href="{{ route('sectors.edit',$sector->id) }}">Editar</a>
+                                                    <a class="btn btn-primary" href="{{ route('sectors.edit',$user->id) }}">Editar</a>
 
                                                     @csrf
                                                     @method('DELETE')
