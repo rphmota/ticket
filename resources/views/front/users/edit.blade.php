@@ -1,15 +1,16 @@
 @extends('front.master.home')
 @section('folhas')
+    <link rel="stylesheet" href="{{asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
 @endsection
 @section('content')
-    <h1>minha piroca</h1>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Cadastro de Setores</h1>
+                        <h1 class="m-0 text-dark">Edição de Usuários</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -21,9 +22,7 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
         <!-- Main content -->
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -33,11 +32,11 @@
                         <!-- Horizontal Form -->
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title">Formulario de cadastro de Setores</h3>
+                                <h3 class="card-title">Formulario de Atualização de Usuarios</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form class="form-horizontal" action="{{ route('sectors.update',$sector->id) }}" method="post">
+                            <form class="form-horizontal" action="{{route('users.update',$user->id)}}" method="post">
                                 @csrf
                                 @method('PUT')
 
@@ -45,50 +44,58 @@
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-2 col-form-label">Nome</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="name" name="name" value="{{$sector->name}}" placeholder="Qual o nome do setor?">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Qual o nome do usuario?" value="{{$user->name}}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="endereco" class="col-sm-2 col-form-label">Endereço</label>
+                                        <label for="cpf" class="col-sm-2 col-form-label">CPF</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="endereco" name="endereco" value="{{$sector->endereco}}" placeholder="Diga aonde está localizado">
+                                            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Diga o cpf do usuario" value="{{$user->cpf}}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="telefone" class="col-sm-2 col-form-label">Telefone</label>
+                                        <label for="email" class="col-sm-2 col-form-label">E-mail</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="telefone" name="telefone" value="{{$sector->telefone}}" placeholder="Qual o telefone de contato?">
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Qual o email?" value="{{$user->email}}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="responsavel" class="col-sm-2 col-form-label">Responsavel</label>
+                                        <label for="password" class="col-sm-2 col-form-label">Password</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="responsavel" name="responsavel" value="{{$sector->responsavel}}" placeholder="Quem é o chefe?">
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Usuario digita uma senha">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+                                        <label for="setor_id" class="col-sm-2 col-form-label">Setor</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="descricao" name="descricao" value="{{$sector->descricao}}" placeholder="Descreva em poucas palavras o que seu setor faz">
+                                            <select class="form-control select2bs4" name="setor_id">
+                                                @foreach ($sectors as $sector)
+                                                    @if($sectorUsuario->id==$sector->id)
+                                                        <option selected="selected" value="{{$sector->id}}">Nome: {{ucfirst($sector->name)}} - Responsavel: {{ucfirst($sector->responsavel)}}</option>
+                                                    @else
+                                                        <option value="{{$sector->id}}">Nome: {{ucfirst($sector->name)}} - Responsavel: {{ucfirst($sector->responsavel)}}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="ativo" class="col-sm-2 col-form-label">Situação</label>
+                                        <label for="nivel_acesso" class="col-sm-2 col-form-label">Situação</label>
                                         <div class="col-sm-10 my-2">
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="customRadio1" name="ativo" value="1" {{$sector->ativo == 1 ? 'checked' : ''}}>
-                                                <label for="customRadio1" class="custom-control-label">Ativo</label>
+                                                <input class="custom-control-input" type="radio" id="customRadio1" name="nivel_acesso" value="2" {{$user->nivel_acesso == 2 ? 'checked' : ''}}>
+                                                <label for="customRadio1" class="custom-control-label">Administrador</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="customRadio2" name="ativo" value="0" {{$sector->ativo == 0 ? 'checked' : ''}}>
-                                                <label for="customRadio2" class="custom-control-label">Inativo</label>
+                                                <input class="custom-control-input" type="radio" id="customRadio2" name="nivel_acesso" value="1" {{$user->nivel_acesso == 1 ? 'checked' : ''}}>
+                                                <label for="customRadio2" class="custom-control-label">Profissional T.I</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <label>O valor padrao e ativo mas se quiser criar o setor e ativalo depois tambem pode</label>
+                                                <input class="custom-control-input" type="radio" id="customRadio3" name="nivel_acesso" value="0" {{$user->nivel_acesso == 0 ? 'checked' : ''}}>
+                                                <label for="customRadio3" class="custom-control-label">Usuario</label>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
@@ -109,3 +116,17 @@
         <!-- /.content -->
     </div>
 @endsection
+@section('scripts')
+    <!-- Select2 -->
+    <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4',
+                placeholder: "Select a state",
+            })
+        })
+    </script>
+@endsection
+

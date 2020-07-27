@@ -27,8 +27,6 @@ class UserController extends Controller
     public function create()
     {
         $sectors = Sector::all();
-
-
         return view('front.users.create')->with(['sectors' => $sectors]);
     }
 
@@ -40,7 +38,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        echo 'rola';
+
+        User::create([
+            'name' => $request->name,
+            'cpf' => $request->cpf,
+            'email' => $request->email,
+            'nivel_acesso'  => $request->nivel_acesso,
+            'password' => md5($request->password),
+            'sector_id' => $request->sector_id
+        ]);
+        return redirect()->route('users.index')
+            ->with('success','Usuario criado com sucesso.');
+
     }
 
     /**
@@ -51,7 +60,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('front.users.show',compact('user'));
     }
 
     /**
@@ -62,7 +71,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $sectors = Sector::all();
+        $sectorUsuario=$user->sector()->get()->first();
+        return view('front.users.edit',compact('user'))->with(['sectorUsuario' => $sectorUsuario, 'sectors' => $sectors]);
     }
 
     /**
@@ -74,7 +85,17 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update([
+            'name' => $request->name,
+            'cpf' => $request->cpf,
+            'email' => $request->email,
+            'nivel_acesso'  => $request->nivel_acesso,
+            'password' => md5($request->password),
+            'sector_id' => $request->sector_id
+        ]);
+
+        return redirect()->route('users.index')
+            ->with('success','Usuário Atualizado com sucesso');
     }
 
     /**
@@ -85,6 +106,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index')
+            ->with('success','Usuário Deletado com sucesso');
+
     }
 }

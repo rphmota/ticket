@@ -2,20 +2,23 @@
 @section('folhas')
 @endsection
 @section('content')
-    <h1>minha piroca</h1>
+    <!-- Formulario de Atualizacao de Setores-->
     <div class="content-wrapper">
+
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Cadastro de Setores</h1>
+                        <h1 class="m-0 text-dark">Atualizacao de Setores</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
+
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{'/home'}}">Home</a></li>
                             <li class="breadcrumb-item active">Setores</li>
                         </ol>
+
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -33,7 +36,7 @@
                         <!-- Horizontal Form -->
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title">Formulario de cadastro de Setores</h3>
+                                <h3 class="card-title">Formulario de Atualizacao de Setores</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
@@ -61,7 +64,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="responsavel" class="col-sm-2 col-form-label">Responsavel</label>
+                                        <label for="responsavel" class="col-sm-2 col-form-label">Responsável</label>
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control" id="responsavel" name="responsavel" value="{{$sector->responsavel}}" placeholder="Quem é o chefe?">
                                         </div>

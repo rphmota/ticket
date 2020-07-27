@@ -27,7 +27,7 @@ class AddSectorToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('sector_id');
+            $table->dropForeign('users_sector_id_foreign');
             $table->dropColumn('sector_id');
         });
     }

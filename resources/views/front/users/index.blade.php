@@ -59,11 +59,11 @@
                                             <td>{{$user->nivel_acesso}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>
-                                                <form action="{{ route('sectors.destroy',$user->id) }}" method="POST">
+                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
 
-                                                    <a class="btn btn-info" href="{{ route('sectors.show',$user->id) }}">Mostrar</a>
+                                                    <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Mostrar</a>
 
-                                                    <a class="btn btn-primary" href="{{ route('sectors.edit',$user->id) }}">Editar</a>
+                                                    <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Editar</a>
 
                                                     @csrf
                                                     @method('DELETE')
