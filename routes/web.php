@@ -21,5 +21,6 @@ Route::get('/home','LoginController@home')->name('login.home');
 Route::resource('sectors','SectorController');
 Route::resource('users','UserController');
 Route::resource('ticketscategory','TicketCategoryController');
+Route::resource('devices','DeviceController');
 
 
