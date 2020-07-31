@@ -68,7 +68,7 @@
                                     <div class="form-group row">
                                         <label for="setor_id" class="col-sm-2 col-form-label">Setor</label>
                                         <div class="col-sm-5">
-                                            <select class="form-control select2bs4" name="setor_id">
+                                            <select class="form-control select2bs4" name="sector_id">
                                                 @foreach ($sectors as $sector)
                                                     @if($sectorUsuario->id==$sector->id)
                                                         <option selected="selected" value="{{$sector->id}}">Nome: {{ucfirst($sector->name)}} - Responsavel: {{ucfirst($sector->responsavel)}}</option>
