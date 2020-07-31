@@ -23,6 +23,7 @@ class LoginController extends Controller
                 $setorNome = DB::table('sectors')->where('id',$user->sector_id)->first();
                 session([
                     'user_name' => $user->name,
+                    'user_id' => $user->id,
                     'nivel' => $user->nivel_acesso,
                     'cpf' => $user->cpf,
                     'setor' => $user->sector_id,
